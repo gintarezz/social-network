@@ -29,8 +29,8 @@ items are saved in memory in h2 database
 
 ## Register/ login
 One can log in with precreated accounts:
-* User: _admin_ Password: _admin123_
-* Administrator: _frank_ Password: _zappa123_
+* User: _skipper_ Password: _skipper_
+* User: _rico_ Password: _rico_
 
 ## Posts
 Users can create, update and delete a post.

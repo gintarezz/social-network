@@ -47,9 +47,6 @@ public class CommentController {
 	@GetMapping()
 	public List<Comment> getComments() {
 		List<Comment> comes=commentService.getComments();
-		for (Comment c:comes) {
-			 log.info("Getting comments from post:????????? {}", c.getPost().getId());
-		}
 		return commentService.getComments();
 	}
 
@@ -81,7 +78,6 @@ public class CommentController {
 	@GetMapping("/post/{id}")
 	public List<Comment> getCommentsByProjectId(@PathVariable Long id) {
 		Post post = postService.getPostById(id);
-		log.info("/-/-/-//-/-/-/-/-/ post with id {}", post.getId());
 		return commentService.getCommentsByPostId(post);
 	}
 }
