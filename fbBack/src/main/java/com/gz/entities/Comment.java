@@ -34,49 +34,44 @@ public class Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	@Column(name = "TEXT",length = 1000)
+
+	@Column(name = "TEXT", length = 1000)
 	private String text;
-	
+
 	@Column(name = "LIKES")
 	private int likes;
-	
+
 	@CreationTimestamp
 	@Column(name = "CREATED_ON")
 	private Date createdOn;
-	
+
 	@ManyToOne
 //	@JsonBackReference
 //	@JsonIgnore
 	@JoinColumn(name = "post")
 	private Post post;
-	
-//	@ManyToOne(fetch = FetchType.EAGER)
-//	@JsonBackReference
-//	@JoinColumn(name = "post")
-//	private Post post;
-//	
+
 	@ManyToOne
 	@JoinColumn(name = "user")
 	private User user;
-	
+
 	public Comment(String text, Post post) {
 		super();
 		this.text = text;
 		this.post = post;
-		this.likes=0;
+		this.likes = 0;
 	}
-	
+
 	public Comment(String text, Post post, User user) {
 		super();
 		this.text = text;
 		this.post = post;
-		this.likes=0;
-		this.user=user;
+		this.likes = 0;
+		this.user = user;
 	}
-	
+
 	public Long getPostId(Comment comment) {
 		return comment.getPost().getId();
 	}
-	
+
 }

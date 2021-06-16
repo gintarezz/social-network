@@ -39,7 +39,7 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@Column(name = "TEXT",length = 1000 )
+	@Column(name = "TEXT", length = 1000)
 	private String text;
 
 	@ManyToMany
@@ -54,14 +54,9 @@ public class Post {
 	@JoinColumn(name = "user")
 	private User user;
 
-	
 	@OneToMany
 	@Column(name = "comments")
-	private Set<Comment> comments= new HashSet<>();
-	
-//	@OneToMany(mappedBy = "post",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-//	@Column(name = "comments")
-//	private Set<Comment> comments;
+	private Set<Comment> comments = new HashSet<>();
 
 	public Post(String text) {
 		super();

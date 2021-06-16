@@ -52,7 +52,6 @@ public class AuthenticationController {
 		
 		LoginResponse response=new LoginResponse();
 		response.setToken(jwtToken);
-		
 
 		return ResponseEntity.ok(response);
 	}
@@ -70,8 +69,6 @@ public class AuthenticationController {
 		userInfo.setUserName(userObj.getUserName());
 		
 		return ResponseEntity.ok(userInfo);
-		
-		
 		
 	}
 }

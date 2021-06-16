@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Container, Modal, Row, Col, Form, FormControl, ListGroup, Card } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button, Modal, Form, FormControl } from 'react-bootstrap';
 import { FaEdit } from 'react-icons/fa';
-import { updatePost } from '../api/authenticationService';
 import "bootstrap/dist/css/bootstrap.css";
 import { updatePost2 } from '../redux/postActions';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 
 
@@ -20,13 +19,6 @@ const Edit = ({ itemToUpdate }) => {
   const handleSave = (item) => {
     item.text = text;
     dispatch(updatePost2(item.id, item));
-    // updatePost(item.id, item).then(res => {     
-    //   window.location.reload();
-    // })
-    //     .catch((error) => {
-    //         console.log(error)
-    //     }
-    //     );
     handleClose();
   }
 
@@ -35,16 +27,12 @@ const Edit = ({ itemToUpdate }) => {
 
   }
 
-
   return (
     <>
       <FaEdit variant="primary" onClick={handleShow}>
-
       </FaEdit>
-
       <Modal show={show} onHide={handleClose} size="xl" >
         <Modal.Header>
-
           <Modal.Title>Edit post</Modal.Title>
         </Modal.Header >
         <Modal.Body>
@@ -54,17 +42,14 @@ const Edit = ({ itemToUpdate }) => {
                 ev.preventDefault();
               }
             }} />
-          
 
           </Form>
-
         </Modal.Body>
         <Modal.Footer>
-          
-        <Button className="btn btn-success" onClick={() => handleSave(item)}>Save</Button>
-            <Button className="btn btn-danger" onClick={handleClose}>
-              Close
-            </Button> 
+          <Button className="btn btn-success" onClick={() => handleSave(item)}>Save</Button>
+          <Button className="btn btn-danger" onClick={handleClose}>
+            Close
+          </Button>
         </Modal.Footer>
       </Modal>
     </>

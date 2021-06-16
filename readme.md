@@ -11,12 +11,11 @@ _select folder the project was saved in f. ex.:_ G:\Programs \SocialNetwork\ **f
 3. Right Mouse Click on the project -> Run As -> Spring Boot App
 4. Open _Visual Studio Code_
 5. Open project File -> Open Folder... -> _select folder the project was saved in f.ex.:_ G:\Programs \ SocialNetwork\ **fbfront** -> Select Folder
-3. Open terminal: Terminal -> New Terminal
-4. Command in the opened terminal to install required packages:  **npm i**  
-5. Command in the opened terminal to start the project: **npm start**
-6. System will open on port [3000](http://localhost:3000/)
-
-items are saved in memory in h2 database
+6. Open terminal: Terminal -> New Terminal
+7. Command in the opened terminal to install required packages:  **npm i**  
+8. Command in the opened terminal to start the project: **npm start**
+9. System will open on port [3000](http://localhost:3000/)
+10. h2 database is used
 
 ## System roles:
 
@@ -29,7 +28,7 @@ items are saved in memory in h2 database
 
 ## Register/ login
 One can log in with precreated accounts:
-* User: _skipper_ Password: _skipper_
+* User: kid Password: kid
 * User: _rico_ Password: _rico_
 
 ## Posts

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button, Container, Row, Col, Form, FormControl, ListGroup, Card } from 'react-bootstrap';
-import { FaRegThumbsUp, FaRegCommentAlt, FaTrash, FaEdit } from 'react-icons/fa';
+// import { FaRegThumbsUp, FaRegCommentAlt, FaTrash, FaEdit } from 'react-icons/fa';
 import { fetchComments, deleteComment, updateComment, fetchCommentsByPostId } from '../api/authenticationService';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchComments2, deleteComment2, updateComment2, fetchPagedComments } from '../redux/commentActions';
@@ -11,59 +11,30 @@ const Comments = ({ postActual, user, totalComments }) => {
     const commentsPost = useSelector(state => state.comments.pagedItems.filter((comment) => comment.post.id == postActual.id));
     const comment = useSelector(state => state.comments.item
     );
-    const [size, setSize] = useState(3);
-    const [isLoading, setIsLoading] = useState(false);
-    const [errorMsg, setErrorMsg] = useState('');
+    const [size, setSize] = useState(30);
+    // const [isLoading, setIsLoading] = useState(false);
+    // const [errorMsg, setErrorMsg] = useState('');
 
     React.useEffect(() => {
-        //  getComments();
-        //    getCommentsByPostId();
         dispatch(fetchComments2());
         dispatch(fetchPagedComments(0, size))
-        // setCommentsPost(commentsPost.filter((comment) => comment.post === postActual))
     }, [comment, size])
 
-    const getComments = async () => {
-        await fetchComments().then((response) => {
-            console.log(postActual);
-        }).catch((e) => {
-            console.log(e);
-            // localStorage.clear();
-            // props.history.push('/');
-        })
-    }
-
-console.log("*****")
-    console.log(commentsPost.length)
-    console.log(size)
-    console.log(totalComments)
-    console.log("*****")
-    const getCommentsByPostId = async () => {
-        await fetchCommentsByPostId(postActual.id).then((response) => {
-
-        }).catch((e) => {
-            console.log(e);
-            // localStorage.clear();
-            // props.history.push('/');
-        })
-    }
-
     const loadMore = () => {
-        setSize((size) => size + 2);
+      setSize((size) => size + 2);
     };
 
+    // const onDelete = (itemId) => {
+    //     dispatch(deleteComment2(itemId));
+    // }
 
-    const onDelete = (itemId) => {
-        dispatch(deleteComment2(itemId));
-    }
-
-    const onLike = (itemId) => {
-        let commentToUpdate = commentsPost.find(item => item.id === itemId);
-        if (!commentToUpdate.usersLikes.includes(user)) {
-            commentToUpdate.usersLikes.push(user);
-            dispatch(updateComment2(itemId, commentToUpdate));
-        }
-    }
+    // const onLike = (itemId) => {
+    //     let commentToUpdate = commentsPost.find(item => item.id === itemId);
+    //     if (!commentToUpdate.usersLikes.includes(user)) {
+    //         commentToUpdate.usersLikes.push(user);
+    //         dispatch(updateComment2(itemId, commentToUpdate));
+    //     }
+    // }
     return (
         <div>
             <Container fluid>
@@ -74,7 +45,7 @@ console.log("*****")
                             <Col sm={12}><Card style={{ width: '100%' }}>
                                 <Card.Header >
                                     <div className="d-flex justify-content-between">
-                                        <div style={{ width: '10%' }}> <img src={`${item.user.photo}`} alt="User photo" className="userPic"></img> </div>
+                                        <div style={{ width: '10%' }}> <img src={`${item.user.photo}`} className="userPic"></img> </div>
                                         <div style={{ width: '90%' }}>
                                             <div className="d-flex justify-content-between" >
                                                 <div>{item.user.firstName} {item.user.lastName}</div>

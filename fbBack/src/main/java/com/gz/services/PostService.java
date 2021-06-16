@@ -60,13 +60,11 @@ public class PostService {
 	}
 
 	public List<Post> getPosts() {
-		List<Post> allPosts = postRepository.findAll();
 		return postRepository.findAll(Sort.by(Sort.Direction.DESC, "createdOn"));
 	}
 
-	public int getTotalPosts() {
-		int totalPosts = postRepository.findAll().size();
-		return totalPosts;
+	public int getTotalPosts(Pageable pageable, String keyword) {
+		return (int) getPaginatedPostsByKeyword(pageable,keyword).getTotalElements();
 	}
 
 	public Post createPost(Post post) {
@@ -81,9 +79,9 @@ public class PostService {
 	public void deletePost(Long id) {
 		Post post = postRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Post does not exist with id: " + id));
-		List<Comment> commentList=commentRepository.findAll();
-		for(Comment c:commentList) {
-			if(c.getPost().getId()==id) {
+		List<Comment> commentList = commentRepository.findAll();
+		for (Comment c : commentList) {
+			if (c.getPost().getId() == id) {
 				commentRepository.deleteById(c.getId());
 			}
 		}
@@ -97,7 +95,6 @@ public class PostService {
 		post.setText(postDetails.getText());
 		post.setUsersLikes(postDetails.getUsersLikes());
 		Post updatedPost = postRepository.save(post);
-
 		return updatedPost;
 	}
 

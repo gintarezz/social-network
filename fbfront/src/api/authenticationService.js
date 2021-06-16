@@ -1,7 +1,6 @@
-import React from 'react';
 import axios from 'axios';
 
-const API_BASE_URL = `http://localhost:8080/api/v1`;
+// const API_BASE_URL = `http://localhost:8080/api/v1`;
 
 
 const getToken=()=>{
@@ -26,7 +25,6 @@ export const fetchUserData=(authRequest)=>{
     })
 }
 
-
 export const fetchPosts=(authRequest)=>{
     return axios({
         method:'GET',
@@ -37,12 +35,15 @@ export const fetchPosts=(authRequest)=>{
     })
 }
 
-export const fetchTotalPosts=()=>{
+export const fetchTotalPosts=(keyword, pageNr, sizeNr)=>{
     return axios({
         method:'GET',
         url:`${process.env.hostUrl||'http://localhost:8080'}/api/v1/posts/total`,
         headers:{
             'Authorization':'Bearer '+getToken()
+        },
+        params: {
+            keyword: keyword, page:pageNr, size:sizeNr, sort:`id,desc`
         }
     })
 }
@@ -145,7 +146,6 @@ export const fetchCommentsNr=(id)=>{
     })
 }
 
-
 export const getPagedPosts = (pageNr, sizeNr) => {
     return axios({
         method:'GET',
@@ -158,7 +158,6 @@ export const getPagedPosts = (pageNr, sizeNr) => {
         }
     })
 }
-
 
 export const getPagedPostsByKeyword = (keyword, pageNr, sizeNr) => {
     return axios({

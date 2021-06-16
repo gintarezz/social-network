@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gz.entities.Post;
-import com.gz.repositories.PostRepository;
 import com.gz.services.PostService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -42,8 +41,8 @@ public class PostController {
 	}
 
 	@GetMapping("/total")
-	public int getTotalPosts() {
-		return postService.getTotalPosts();
+	public int getTotalPosts(Pageable pageable, @RequestParam String keyword) {
+		return postService.getTotalPosts(pageable, keyword);
 	}
 
 	@ResponseStatus(HttpStatus.OK)

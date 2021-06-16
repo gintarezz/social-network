@@ -1,30 +1,18 @@
 import { FETCH_COMMENTS, CREATE_COMMENT, UPDATE_COMMENT, DELETE_COMMENT, FETCH_PAGED_COMMENTS } from './types';
-import { fetchComments, createComment, updateComment, deleteComment, fetchCommentsByPostId, getPagedComments } from '../api/authenticationService';
-import React from 'react';
-import axios from 'axios';
-
-
-// const getToken=()=>{
-//     return localStorage.getItem('USER_KEY');
-// }
+import { fetchComments, createComment, updateComment, deleteComment, getPagedComments } from '../api/authenticationService';
 
 export const fetchComments2 = () => dispatch => {
-    console.log('fetching comments')
-    // fetch('')
     fetchComments()
         // .then(res=>res.json())
         .then(comments => dispatch({
             type: FETCH_COMMENTS,
             payload: comments
-
         }
         )
         );
 };
 
-
 export const fetchPagedComments = (pageNr, sizeNr) => dispatch => {
-    console.log('fetching paged comments')
     getPagedComments(pageNr, sizeNr)
         // .then(res=>res.json())
         .then(pagedComments => dispatch({
@@ -33,14 +21,9 @@ export const fetchPagedComments = (pageNr, sizeNr) => dispatch => {
         }
         )
         );
-    //console.log(posts) 
 };
 
-
-
 export const createComment2 = (commentData) => dispatch => {
-
-    // fetch('')
     createComment(commentData)
         // .then(res=>res.json())
         .then(comment => dispatch({
@@ -52,7 +35,6 @@ export const createComment2 = (commentData) => dispatch => {
 };
 
 export const updateComment2 = (id, commentData) => async (dispatch) => {
-    console.log('updating a comment')
     try {
         const res = await updateComment(id, commentData);
         dispatch({
@@ -67,7 +49,6 @@ export const updateComment2 = (id, commentData) => async (dispatch) => {
 };
 
 export const deleteComment2 = (id) => async (dispatch) => {
-    console.log('deleting a comment' + id)
     try {
         await deleteComment(id);
         dispatch({
@@ -75,7 +56,6 @@ export const deleteComment2 = (id) => async (dispatch) => {
             payload: { id },
         });
     } catch (err) {
-        console.log(err);
     }
 };
 

@@ -14,8 +14,9 @@ code {
 }
 
 .background{
-  background-color: rgb(240, 241, 247);
-  height:100vh
+  background-color: rgb(241, 241, 243);
+  height:100%;
+  min-height:100vw
 }
 
 .userPic{
