@@ -21,9 +21,9 @@ _select folder the project was saved in f. ex.:_ G:\Programs \SocialNetwork\ **f
 
 | Role  | Permissions |
 | ------------- | ------------- |
+| USER  | create, view, update, delete posts, write comments  |
 <!-- | ADMIN  | confirm new user account, create, update, delete users, review system logs, create, update, view, delete posts and comments, assign posts to users  |
 | MODERATOR  | create, view, update, delete projects and tasks, assign projects to users  | -->
-| USER  | create, view, update, delete posts, write comments  |
 
 
 ## Register/ login
